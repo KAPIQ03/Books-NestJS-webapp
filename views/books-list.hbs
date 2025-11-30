@@ -1,0 +1,25 @@
+<h1>Lista Książek</h1>
+{{#if books.length}}
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tytuł</th>
+        <th>ID Autor</th>
+        <th>ID Wydawnictwo</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each books}}
+        <tr>
+          <td>{{this.id}}</td>
+          <td>{{this.title}}</td>
+          <td>{{this.category_idc}}</td>
+          <td>{{this.publisher_idp}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <p>Brak książek w bazie danych.</p>
+{{/if}}

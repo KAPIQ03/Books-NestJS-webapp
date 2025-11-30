@@ -6,6 +6,7 @@ import {
   Param,
   Delete,
   Put,
+  Render, // <- import Rander decorator
 } from '@nestjs/common';
 import { BooksService } from './books.service';
 import { Book } from './book.entity';
@@ -14,6 +15,15 @@ import { Book } from './book.entity';
 export class BooksController {
   constructor(private readonly bookService: BooksService) {}
 
+  // Render
+  @Get('/books-list')
+  @Render('books-list')
+  async viewAllBooks() {
+    const books = await this.bookService.findAll();
+    return { books: books };
+  }
+
+  // API
   // get all books
   @Get()
   async findAll(): Promise<Book[]> {
